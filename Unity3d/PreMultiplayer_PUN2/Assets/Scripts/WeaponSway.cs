@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class WeaponSway : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 nextPosition;
     private Vector3 currentVelocity = Vector3.zero;
-    
+
+    public PhotonView photonView;
+
     void Start()
     {
         startPosition = transform.localPosition;
@@ -19,6 +22,9 @@ public class WeaponSway : MonoBehaviour
     
     void Update()
     {
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * swaySensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * swaySensitivity * Time.deltaTime;
 

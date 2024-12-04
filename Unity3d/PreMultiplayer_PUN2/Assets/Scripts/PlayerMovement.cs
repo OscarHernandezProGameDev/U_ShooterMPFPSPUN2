@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,9 +21,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float jumpHeight = 2f;
 
-    
+    public PhotonView photonView;
+
     void Update()
     {
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+            return;
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)

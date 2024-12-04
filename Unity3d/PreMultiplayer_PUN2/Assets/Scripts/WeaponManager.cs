@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using TMPro;
+using Photon.Pun;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -39,7 +40,9 @@ public class WeaponManager : MonoBehaviour
     public bool isAutomatic;
 
     public string weaponType;
-    
+
+    public PhotonView photonView;
+
     private void Start()
     {
         weaponAudioSource = GetComponent<AudioSource>();
@@ -52,6 +55,9 @@ public class WeaponManager : MonoBehaviour
 
     void Update()
     {
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+            return;
+
         if (!GameManager.sharedInstance.isPaused && !GameManager.sharedInstance.isGameOver)
         {
             if (playerAnimator.GetBool("isShooting"))

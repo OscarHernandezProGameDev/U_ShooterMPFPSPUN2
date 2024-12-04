@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,8 @@ public class TouchPlayerMovement : MonoBehaviour
     [SerializeField] private float cameraSensibility;
     private float cameraPitch;
 
+    public PhotonView photonView;
+
     private void Start()
     {
         leftFingerID = -1;
@@ -41,6 +44,9 @@ public class TouchPlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+            return;
+
         GetTouchInput();
 
         if (leftFingerID != -1)
@@ -65,26 +71,29 @@ public class TouchPlayerMovement : MonoBehaviour
                 {
                     leftFingerID = t.fingerId;
                     moveTouchStartPosition = t.position;
-                }else if (t.position.x > halfScreen && rightFingerID == -1)
+                }
+                else if (t.position.x > halfScreen && rightFingerID == -1)
                 {
                     rightFingerID = t.fingerId;
                 }
             }
             if (t.phase == TouchPhase.Canceled)
             {
-                
+
             }
             if (t.phase == TouchPhase.Moved)
             {
                 if (leftFingerID == t.fingerId)
                 {
                     moveInput = t.position - moveTouchStartPosition;
-                }else if (rightFingerID == t.fingerId)
+                }
+                else if (rightFingerID == t.fingerId)
                 {
                     lookInput = t.deltaPosition * cameraSensibility * Time.deltaTime;
                 }
-                
-            }if (t.phase == TouchPhase.Stationary)
+
+            }
+            if (t.phase == TouchPhase.Stationary)
             {
                 if (rightFingerID == t.fingerId)
                 {
@@ -96,7 +105,8 @@ public class TouchPlayerMovement : MonoBehaviour
                 if (leftFingerID == t.fingerId)
                 {
                     leftFingerID = -1;
-                }else if (rightFingerID == t.fingerId)
+                }
+                else if (rightFingerID == t.fingerId)
                 {
                     rightFingerID = -1;
                 }
@@ -131,7 +141,7 @@ public class TouchPlayerMovement : MonoBehaviour
     {
         cameraPitch = Mathf.Clamp(cameraPitch, -90, 90);
         playerCamera.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
-        
+
         transform.Rotate(Vector3.up, lookInput.x);
     }
 }

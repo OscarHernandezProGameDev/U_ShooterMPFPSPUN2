@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -27,10 +28,12 @@ public class PlayerManager : MonoBehaviour
     public int totalPoints;
     public TextMeshProUGUI pointsText;
 
+    public PhotonView photonView;
+
     private void Start()
     {
         playerCameraOriginalRotation = playerCamera.transform.localRotation;
-        
+
         WeaponSwitch(0);
         totalPoints = 0;
         UpdatePoints(0);
@@ -40,16 +43,24 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+        {
+            // Sino es mi camara que se desactive
+            playerCamera.SetActive(false);
+            return;
+        }
+
         if (hitPanel.alpha > 0)
         {
             hitPanel.alpha -= Time.deltaTime;
         }
-        
+
         if (shakeTime < shakeDuration)
         {
             shakeTime += Time.deltaTime;
             CameraShake();
-        }else if (playerCamera.transform.localRotation != playerCameraOriginalRotation)
+        }
+        else if (playerCamera.transform.localRotation != playerCameraOriginalRotation)
         {
             playerCamera.transform.localRotation = playerCameraOriginalRotation;
         }
@@ -58,7 +69,7 @@ public class PlayerManager : MonoBehaviour
         {
             WeaponSwitch(activeWeaponIndex + 1);
         }
-        
+
     }
 
     public void Hit(float damage)

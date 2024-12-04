@@ -906,6 +906,7 @@ MonoBehaviour:
   swaySensitivity: 2
   swayClamp: 20
   swaySmoothness: 20
+  photonView: {fileID: 5408158459971261656}
 --- !u!1 &2861343943361249200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1177,7 @@ MonoBehaviour:
   fireRateTimer: 0
   isAutomatic: 1
   weaponType: isRifle
+  photonView: {fileID: 5408158459971261656}
 --- !u!1 &3277719298271347444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1627,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpHeight: 2
+  photonView: {fileID: 5408158459971261656}
 --- !u!114 &2925492627116496436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,6 +1649,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 9015546586640912045}
   totalPoints: 0
   pointsText: {fileID: 9015546587027071145}
+  photonView: {fileID: 5408158459971261656}
 --- !u!135 &9015546587909385009
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1683,6 +1687,7 @@ MonoBehaviour:
   jumpHeight: 2
   playerCamera: {fileID: 9015546586737206592}
   cameraSensibility: 10
+  photonView: {fileID: 5408158459971261656}
 --- !u!114 &5408158459971261656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,6 +1999,7 @@ MonoBehaviour:
   fireRateTimer: 0
   isAutomatic: 0
   weaponType: isPistol
+  photonView: {fileID: 5408158459971261656}
 --- !u!1 &5995508490452692388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensibility: 500
   playerBody: {fileID: 5419553396751318989}
+  photonView: {fileID: 5408158459971261656}
 --- !u!95 &7382788071971796164
 Animator:
   serializedVersion: 5
