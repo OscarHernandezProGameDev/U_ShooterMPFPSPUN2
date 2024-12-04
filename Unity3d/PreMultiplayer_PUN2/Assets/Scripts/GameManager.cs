@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         isGameOver = false;
         Time.timeScale = 1;
+
+        spawnPoints = GameObject.FindGameObjectsWithTag("Spawners");
     }
 
     void Update()
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
         if (enemiesAlive == 0)
         {
             round++;
-            roundText.text = $"Round: {round}"; 
+            roundText.text = $"Round: {round}";
             NextWave(round);
         }
 
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         roundsSurvivedText.text = round.ToString();
-        
+
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         isGameOver = true;
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;
     }
-    
+
     public void Resume()
     {
         pausePanel.SetActive(false);
