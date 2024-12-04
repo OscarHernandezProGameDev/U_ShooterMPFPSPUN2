@@ -32,7 +32,8 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Cargando escena de juego");
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+        PhotonNetwork.LoadLevel(2);
     }
 
     public void FindMatch()
