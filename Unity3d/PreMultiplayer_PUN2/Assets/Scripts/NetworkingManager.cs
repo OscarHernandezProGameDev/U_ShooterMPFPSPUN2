@@ -2,9 +2,12 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NetworkingManager : MonoBehaviourPunCallbacks
 {
+    public Button multiplayerButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +30,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Estamos listo para multijugador");
+        multiplayerButton.interactable = true;
     }
 }
