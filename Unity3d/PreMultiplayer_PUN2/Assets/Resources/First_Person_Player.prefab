@@ -1559,6 +1559,7 @@ GameObject:
   - component: {fileID: 9015546587909385009}
   - component: {fileID: 9015546587909385018}
   - component: {fileID: 5408158459971261656}
+  - component: {fileID: 1684174831665727882}
   m_Layer: 0
   m_Name: First_Person_Player
   m_TagString: Player
@@ -1706,10 +1707,29 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1684174831665727882}
+  - {fileID: 6964638500627301678}
+  - {fileID: 7696631355235185464}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1684174831665727882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423306192632057359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &5786252436652628807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2261,8 @@ GameObject:
   - component: {fileID: 7872078905051377265}
   - component: {fileID: 7382788071971796165}
   - component: {fileID: 7382788071971796164}
+  - component: {fileID: 6964638500627301678}
+  - component: {fileID: 7696631355235185464}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -2302,6 +2324,55 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6964638500627301678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382788071971796171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &7696631355235185464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382788071971796171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: isShooting
+  - Type: 4
+    SynchronizeType: 1
+    Name: isAiming
+  - Type: 4
+    SynchronizeType: 1
+    Name: isReloading
+  - Type: 9
+    SynchronizeType: 1
+    Name: isRifle
+  - Type: 9
+    SynchronizeType: 1
+    Name: isPistol
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &7478483683361055766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,9 +2862,9 @@ Canvas:
   m_GameObject: {fileID: 9015546586066800093}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 9015546586737206599}
+  m_PlaneDistance: 0.15
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
